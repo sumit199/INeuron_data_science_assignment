@@ -4,7 +4,6 @@
 #Link - https://data.nasa.gov/resource/y77d-th95.json
 
 import pandas as pd
-import numpy as np
 
 data = pd.read_json("https://data.nasa.gov/resource/y77d-th95.json")
 
