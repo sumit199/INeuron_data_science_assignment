@@ -28,6 +28,7 @@ convert_dict = {'name': str,
                 }
 df = df.astype(convert_dict)
 
+print(df.head())
 #converting to datetime
 df['year'] = pd.to_datetime(df['year'],format='%Y-%m-%dT%H:%M:%S.%f', errors = 'coerce')
 

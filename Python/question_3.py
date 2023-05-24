@@ -6,18 +6,17 @@
 
 import pandas as pd
 import json
-from datetime import datetime
 
-file = 'pokedex.json'
+import json
+file = 'G:\INeuron_data_science_assignment\pokedex.json'
 #reading json into dcitionary
 f = open ( file , "r") 
 data = json.loads(f.read())
 #dictionary is inside the pokemon key so will we access it 
 data = data['pokemon']
-#normalize the dictionary as it contain multilevel dictionary
-dict_data = pd.json_normalize(data, sep=',')
-#converting dict to dataframe
-df = pd.DataFrame(dict_data, )
+
+df = pd.DataFrame.from_records(data)
+
 #dropping id column
 df.drop('id', axis=1, inplace=True)
 
@@ -31,13 +30,6 @@ df['candy_count'] = df['candy_count'].fillna(value=0)
 #df = df.dropna(subset=['spawn_time'])
 df = df.drop([131,143,144,145,149,150])
 
-#remove brackets from strings from type column
-def  remove_brackets_str(list_of_strings):
-    result = ', '.join(list_of_strings)
-    return result
-
-df['type'] = df['type'].apply(remove_brackets_str)
-df['weaknesses'] = df['weaknesses'].apply(remove_brackets_str)
 
 #converting multipliers to list of int
 def  convert_to_int(list_of_numbers):
