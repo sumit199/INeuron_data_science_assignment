@@ -76,5 +76,5 @@ df3['summary'] = df3['summary'].str.replace(r'<[^<>]*>', '', regex=True)
 
 print(df3.info())
 
-df3.to_csv('tvmazedata.csv')
+df3.to_csv('maze.csv')
 
